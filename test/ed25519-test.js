@@ -6,6 +6,7 @@ var elliptic = require('../');
 var utils = elliptic.utils;
 var toArray = elliptic.utils.toArray;
 var eddsa = elliptic.eddsa;
+var ed25519gluon = elliptic.curves.ed25519gluon;
 
 function toHex(arr) {
   return elliptic.utils.toHex(arr).toUpperCase();
@@ -19,7 +20,7 @@ describe('ed25519 derivations', function() {
   var derivations;
 
   before(function() {
-    ed25519 = new eddsa('ed25519');
+    ed25519 = new eddsa(ed25519gluon);
     derivations = require('./fixtures/derivation-fixtures');
     assert.equal(derivations.length, expectedTests);
   });
